@@ -7,7 +7,7 @@ import com.example.placeholderviewer.PlaceHolderViewerApplication;
 import java.util.Map;
 
 public class GenericPreferenceManager {
-    public static SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(PlaceHolderViewerApplication.getAppContext());
+    private static SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(PlaceHolderViewerApplication.getAppContext());
 
     public static String getPreferenceValue(String key, String defValue) {
         return prefs.getString(key, defValue);

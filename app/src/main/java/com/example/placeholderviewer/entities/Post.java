@@ -6,26 +6,30 @@ import android.os.Parcelable;
 import com.example.placeholderviewer.database.base.DbEntity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Post extends DbEntity implements Serializable, Parcelable {
 
     private User author;
     private String title;
     private String body;
+    List<Comment> comments;
 
     public Post() {
     }
 
-    public Post(User author, String title, String body) {
+    public Post(User author, String title, String body, List<Comment> comments) {
         this.author = author;
         this.title = title;
         this.body = body;
+        this.comments = comments;
     }
 
     protected Post(Parcel in) {
         author = in.readParcelable(User.class.getClassLoader());
         title = in.readString();
         body = in.readString();
+        comments = in.createTypedArrayList(Comment.CREATOR);
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -64,6 +68,14 @@ public class Post extends DbEntity implements Serializable, Parcelable {
         this.body = body;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -74,15 +86,6 @@ public class Post extends DbEntity implements Serializable, Parcelable {
         dest.writeParcelable(author, flags);
         dest.writeString(title);
         dest.writeString(body);
-    }
-
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Post{");
-        sb.append("Author=").append(author);
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", body='").append(body).append('\'');
-        sb.append('}');
-        return sb.toString();
+        dest.writeTypedList(comments);
     }
 }

@@ -15,7 +15,7 @@ public class User extends DbEntity implements Serializable, Parcelable {
     private Adress adress;
     private String phone;
     private String website;
-    Compagny compagny;
+    private Compagny compagny;
 
     public User() {
     }

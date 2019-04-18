@@ -7,23 +7,23 @@ import java.io.Serializable;
 
 public class Comment extends DbEntity implements Serializable, Parcelable {
 
-    private Post post;
-    private User commentator;
+    private String name;
     private String body;
+    private Post post;
 
     public Comment() {
     }
 
-    public Comment(Post post, User commentator, String body) {
-        this.post = post;
-        this.commentator = commentator;
+    public Comment(String name, String body, Post post) {
+        this.name = name;
         this.body = body;
+        this.post = post;
     }
 
     protected Comment(Parcel in) {
-        post = in.readParcelable(Post.class.getClassLoader());
-        commentator = in.readParcelable(User.class.getClassLoader());
+        name = in.readString();
         body = in.readString();
+        post = in.readParcelable(Post.class.getClassLoader());
     }
 
     public static final Creator<Comment> CREATOR = new Creator<Comment>() {
@@ -38,20 +38,24 @@ public class Comment extends DbEntity implements Serializable, Parcelable {
         }
     };
 
-    public Post getPost() {
-        return post;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(body);
+        dest.writeParcelable(post, flags);
     }
 
-    public User getCommentator() {
-        return commentator;
+    public String getName() {
+        return name;
     }
 
-    public void setCommentator(User commentator) {
-        this.commentator = commentator;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getBody() {
@@ -62,25 +66,11 @@ public class Comment extends DbEntity implements Serializable, Parcelable {
         this.body = body;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public Post getPost() {
+        return post;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeParcelable(post, flags);
-        dest.writeParcelable(commentator, flags);
-        dest.writeString(body);
-    }
-
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Comment{");
-        sb.append("post=").append(post);
-        sb.append(", commentator=").append(commentator);
-        sb.append(", body='").append(body).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public void setPost(Post post) {
+        this.post = post;
     }
 }

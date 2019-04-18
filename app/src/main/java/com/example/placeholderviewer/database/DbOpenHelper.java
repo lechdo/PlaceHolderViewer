@@ -12,8 +12,6 @@ import com.example.placeholderviewer.database.contracts.GeoContract;
 import com.example.placeholderviewer.database.contracts.PostContract;
 import com.example.placeholderviewer.database.contracts.UserContract;
 
-import java.util.List;
-
 public class DbOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "placeholderviewer.db";
     private static final int DB_VERSION = 1;

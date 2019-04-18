@@ -10,7 +10,7 @@ public class DbGeoDTO implements DbEntityDTO<Geo> {
 
     @Override
     public Geo parseOut(Cursor cursor) {
-        Geo geo = null;
+        Geo geo = new Geo();
 
         geo.setId(cursor.getLong(cursor.getColumnIndex(GeoContract.COL_ID)));
         geo.setLat(cursor.getFloat(cursor.getColumnIndex(GeoContract.COL_LAT)));
@@ -20,6 +20,11 @@ public class DbGeoDTO implements DbEntityDTO<Geo> {
 
     @Override
     public ContentValues parseIn(Geo item) {
-        return null;
+        ContentValues values = new ContentValues();
+
+        values.put(GeoContract.COL_LAT, item.getLat());
+        values.put(GeoContract.COL_LON, item.getLon());
+
+        return values;
     }
 }

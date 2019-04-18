@@ -15,4 +15,6 @@ public interface BaseDAO<T extends DbEntity> {
 
     boolean delete(T item);
 
+    List<T> selectByIdElement(Long idElement);
+
 }
