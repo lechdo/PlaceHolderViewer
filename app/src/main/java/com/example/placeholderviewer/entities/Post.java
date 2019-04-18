@@ -3,7 +3,7 @@ package com.example.placeholderviewer.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.placeholderviewer.database.base.DbEntity;
+import com.example.placeholderviewer.data.database.base.DbEntity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -87,5 +87,16 @@ public class Post extends DbEntity implements Serializable, Parcelable {
         dest.writeString(title);
         dest.writeString(body);
         dest.writeTypedList(comments);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Post{");
+        sb.append("author=").append(author);
+        sb.append(", title='").append(title).append('\'');
+        sb.append(", body='").append(body).append('\'');
+        sb.append(", comments=").append(comments);
+        sb.append('}');
+        return sb.toString();
     }
 }

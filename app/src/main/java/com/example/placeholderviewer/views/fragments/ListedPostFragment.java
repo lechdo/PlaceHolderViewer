@@ -15,6 +15,8 @@ import com.example.placeholderviewer.R;
 import com.example.placeholderviewer.entities.Post;
 import com.example.placeholderviewer.utils.Bouchon;
 
+import java.util.List;
+
 
 /**
  * A fragment representing a list of Items.
@@ -73,7 +75,7 @@ public class ListedPostFragment extends Fragment {
             }
 
 
-            recyclerView.setAdapter(new MyListedPostRecyclerViewAdapter(Bouchon.getPosts(), mListener));
+            recyclerView.setAdapter(new MyListedPostRecyclerViewAdapter(mListener.getListPosts(), mListener));
         }
         return view;
     }
@@ -99,5 +101,6 @@ public class ListedPostFragment extends Fragment {
         // TODO: Update argument type and name
         Post onShortClickListener(Post post);
         Post onLongClickListener(Post post);
+        List<Post> getListPosts();
     }
 }

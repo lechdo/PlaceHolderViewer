@@ -2,7 +2,7 @@ package com.example.placeholderviewer.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.example.placeholderviewer.database.base.DbEntity;
+import com.example.placeholderviewer.data.database.base.DbEntity;
 import java.io.Serializable;
 
 public class Comment extends DbEntity implements Serializable, Parcelable {
