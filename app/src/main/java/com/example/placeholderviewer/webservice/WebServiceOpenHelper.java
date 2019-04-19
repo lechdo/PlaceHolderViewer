@@ -1,24 +1,34 @@
-package com.example.placeholderviewer.data.network;
+package com.example.placeholderviewer.webservice;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
-public class NetworkOpenHelper {
+/**
+ * Permet d'ouvrir le service web de manière générique, peut etre utilisé avec
+ *
+ * mettre dans le manifest :
+ * <uses-permission android:name="android.permission.INTERNET"/>
+ * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+ *
+ */
+public class WebServiceOpenHelper {
 
-    private static NetworkOpenHelper INSTANCE = null;
+    private static WebServiceOpenHelper INSTANCE = null;
     private Context context;
     private NetworkInfo networkInfo;
 
-    private NetworkOpenHelper(Context context) {
+
+    //TODO rendre cette classe générique avec le itemApplication.
+    private WebServiceOpenHelper(Context context) {
         this.context = context;
         this.networkInfo = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE))
                 .getActiveNetworkInfo();
     }
 
     public static NetworkInfo getNetworkInfo(Context context) {
-        return new NetworkOpenHelper(context).getNetworkInfo();
+        return new WebServiceOpenHelper(context).getNetworkInfo();
     }
 
     private NetworkInfo getNetworkInfo() {

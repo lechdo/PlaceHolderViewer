@@ -1,4 +1,4 @@
-package com.example.placeholderviewer.data.network;
+package com.example.placeholderviewer.webservice.jsonutils;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,10 +1,10 @@
-package com.example.placeholderviewer.data.network.daos;
+package com.example.placeholderviewer.webservice.daos;
 
 import android.content.Context;
 
 import java.util.List;
 
-public interface EntityApiDAO<T> {
+public interface EntityNetworkDAO<T> {
 
     List<T> get(Context context);
 

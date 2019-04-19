@@ -12,6 +12,15 @@ import com.example.placeholderviewer.data.database.contracts.GeoContract;
 import com.example.placeholderviewer.data.database.contracts.PostContract;
 import com.example.placeholderviewer.data.database.contracts.UserContract;
 
+/**
+ * Singleton de connexion à la bdd,
+ * DATABASE_NAME doit être spécifié
+ *
+ * onCreate : insérer les méthode de création de tables, éventuellement
+ * insérer des éléments à la création
+ * OnUpgrade : insérer les méthodes de suppression de table et le système de migration, rappeler
+ * le onCreate.
+ */
 public class DbOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "placeholderviewer.db";
     private static final int DB_VERSION = 1;

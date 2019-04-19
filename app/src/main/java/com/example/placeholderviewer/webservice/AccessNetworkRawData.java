@@ -1,4 +1,4 @@
-package com.example.placeholderviewer.data.network;
+package com.example.placeholderviewer.webservice;
 
 import android.os.AsyncTask;
 
@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class AccessData extends AsyncTask<String,Void,String> {
+public class AccessNetworkRawData extends AsyncTask<String,Void,String> {
 
     @Override
     protected String doInBackground(String... strings) {

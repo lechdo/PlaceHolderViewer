@@ -6,15 +6,12 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.placeholderviewer.R;
-import com.example.placeholderviewer.data.network.daos.CommentNetworkDAO;
-import com.example.placeholderviewer.entities.Comment;
 import com.example.placeholderviewer.entities.Post;
-import com.example.placeholderviewer.data.network.daos.PostApiDAO;
+import com.example.placeholderviewer.webservice.daos.PostNetworkDAO;
 import com.example.placeholderviewer.views.fragments.ListedPostFragment;
 
 import java.util.List;
@@ -37,15 +34,15 @@ public class ListPostActivity extends AppCompatActivity implements ListedPostFra
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        posts = new PostApiDAO().get(this);
-        List<Comment> comments = new CommentNetworkDAO().get(this);
-        for (Post post: posts) {
-            for (Comment comment: comments) {
-                if (comment.getPost().getId() == post.getId()) {
-                    post.getComments().add(comment);
-                }
-            }
-        }
+        posts = new PostNetworkDAO().get(this);
+//        List<Comment> comments = new CommentNetworkDAO().get(this);
+//        for (Post post: posts) {
+//            for (Comment comment: comments) {
+//                if (comment.getPost().getId() == post.getId()) {
+//                    post.getComments().add(comment);
+//                }
+//            }
+//        }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         ListedPostFragment listedPostFragment = new ListedPostFragment();

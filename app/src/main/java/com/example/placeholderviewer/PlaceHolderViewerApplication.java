@@ -6,14 +6,16 @@ import android.content.Context;
 public class PlaceHolderViewerApplication extends Application {
 
     private static Context context;
-    private static PlaceHolderViewerApplication instance;
 
+    /**
+     * permet de récupérer le contexte de l'application même, bonne pratique pour utiliser un contexte
+     * en dehors d'une activité (daos), mais ne fonctionne pas forcément pour tout.
+     *
+     * pour l'utiliser le manifest doit contenir le nom de cette classe dans la balise application :
+     * android:name=".PlaceHolderViewerApplication"
+     */
     public PlaceHolderViewerApplication() {
-        instance = this;
-    }
-
-    public static Context getContext() {
-        return instance;
+        PlaceHolderViewerApplication.context = this;
     }
 
     @Override
